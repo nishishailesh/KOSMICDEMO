@@ -1,22 +1,22 @@
 #!/usr/bin/python3
 import sys
-sys.path.append('/root/projects/kosmic/kosmic/python-bindings')
+sys.path.append('/root/projects/ref/kosmic/python-bindings')
 import kosmic
 import csv
-f=open('1.csv')
+f=open(sys.argv[1])
 c=csv.reader(f)
 x=[]
 for d in c:
-  print(d)
+  #print(d)
   if(len(d)>0):
     try:
       float_number = float(d[0])
-      if(float_number<150):
-        x=x+[float_number]
+      #if(float_number<150):
+      x=x+[float_number]
     except ValueError as e:
       pass
       #print(f"Error: {e}")
-print(x)
+#print(x)
 #quit()
 result = kosmic.kosmic(x, decimals=1)
 lr=kosmic.percentile(result, 0.025)
